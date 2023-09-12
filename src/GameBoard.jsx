@@ -84,7 +84,12 @@ export default function GameBoard({ win, setWin }) {
       <div className="turn-container">
         <span className="turn">{win ? "Game Over" : turn + "' Turn"}</span>
 
-        <button onClick={handleToggle} className="toggle-btn">
+        <button
+          disabled={!boxes.every((box) => box.type === null)}
+          aria-disabled={!boxes.every((box) => box.type === null)}
+          onClick={handleToggle}
+          className="toggle-btn"
+        >
           Change Choice
         </button>
       </div>
