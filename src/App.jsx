@@ -7,7 +7,6 @@ function App() {
     <>
       <h1>Tic Toe Game</h1>
       <GameBoard win={win} setWin={setWin} />
-      {win && <h2>{win}</h2>}
     </>
   );
 }

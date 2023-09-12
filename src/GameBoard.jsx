@@ -82,7 +82,7 @@ export default function GameBoard({ win, setWin }) {
   return (
     <div className="game--container">
       <div className="turn-container">
-        <span className="turn">{win ? "Game Over" : turn + "' Turn"}</span>
+        <span className="turn">{win ? win : turn + "' Turn"}</span>
 
         <button
           disabled={!boxes.every((box) => box.type === null)}
