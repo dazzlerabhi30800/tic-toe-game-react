@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function GameBoard({ win, setWin }) {
-  const [turn, setTurn] = useState("O");
   const [boxes, setBoxes] = useState(generateBoxes());
+  const [toggleChoice, setToggleChoice] = useState(false);
+  const [turn, setTurn] = useState("");
+
+  useEffect(() => {
+    setTurn(toggleChoice ? "X" : "O");
+  }, [toggleChoice]);
 
   function generateBoxes() {
     let arr = [];
@@ -64,17 +69,25 @@ export default function GameBoard({ win, setWin }) {
 
   const handleReset = () => {
     setBoxes(generateBoxes());
-    // setBoxes(
-    //   boxes.map((box) => {
-    //     return { ...box, type: null };
-    //   }),
-    // );
     setWin(null);
-    setTurn("O");
+    setToggleChoice(false);
+  };
+
+  const handleToggle = () => {
+    const checkBox = boxes.every((box) => box.type === null);
+    if (!checkBox) return;
+    setToggleChoice((prev) => !prev);
   };
 
   return (
     <div className="game--container">
+      <div className="turn-container">
+        <span className="turn">{win ? "Game Over" : turn + "' Turn"}</span>
+
+        <button onClick={handleToggle} className="toggle-btn">
+          Change Choice
+        </button>
+      </div>
       <div className="game--wrapper">
         {boxes.map((box, index) => (
           <div

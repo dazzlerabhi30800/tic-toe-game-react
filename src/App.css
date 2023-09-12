@@ -26,6 +26,32 @@
   margin: 2rem auto 1rem;
 }
 
+/* Change Button */
+button {
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+}
+
+.turn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.turn {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.toggle-btn {
+  color: #000;
+  margin: 1rem 0;
+  background: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .game--wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -109,10 +135,11 @@
   .gamebox {
     cursor: pointer;
   }
-  .resetBtn {
+  button {
+    transition: 0.3s linear;
     cursor: pointer;
   }
-  .resetBtn:hover {
-    filter: brightness(140%);
+  button:hover {
+    filter: brightness(80%) contrast(80%);
   }
 }
